@@ -1,0 +1,17 @@
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+
+function dbConn() {
+  dotenv.config();
+  mongoose
+    .connect(process.env.MONGO_URL)
+    .then(() => {
+      console.log("Connected to database");
+    })
+    .catch((err) => {
+      console.log("Error connecting to database");
+      console.log(err);
+    });
+}
+
+module.exports = dbConn;
